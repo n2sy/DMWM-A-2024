@@ -3,3 +3,8 @@
 <hr />
 
 <app-first></app-first>
+<hr />
+<app-child
+  (msgToParent)="traitementDuApp($event)"
+  [colorPref]="'pink'"
+></app-child>

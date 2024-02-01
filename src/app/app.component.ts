@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'DMWM-A-2024';
   student; // = "Nidhal";
+
+  traitementDuApp(msg) {
+    alert(msg);
+  }
 }
