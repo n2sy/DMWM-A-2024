@@ -1,0 +1,9 @@
+<ol class="list-group">
+  @for (cand of tabCands; track $index) {
+  <app-item
+    (candToListe)="sendCandToCv($event)"
+    [oneCandidat]="cand"
+  ></app-item>
+
+  }
+</ol>
