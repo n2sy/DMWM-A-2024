@@ -1,0 +1,19 @@
+<label for="">Account name</label>
+<!-- <input [(ngModel)]="nameValue" type="text" class="form-control" /> -->
+<input #inp type="text" class="form-control" />
+
+<label for="">Account status</label>
+<!-- <select [(ngModel)]="statutsValue" class="form-control"> -->
+<select #sel class="form-control">
+  <!-- @for (opt of tabOptions; track $index) {}
+  <option value="opt" [value]="opt">{{ opt }}</option> -->
+  <option *ngFor="let opt of tabOptions" [value]="opt">{{ opt }}</option>
+  <!-- <option *ngFor="let opt of tabOptions" [value]="opt" value="{{opt}}">{{ opt }}</option> -->
+</select>
+
+<button
+  (click)="sendNewAccountToHome(inp.value, sel.value)"
+  class="btn btn-primary"
+>
+  Add Account
+</button>
