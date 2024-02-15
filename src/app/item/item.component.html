@@ -1,4 +1,4 @@
-<li (click)="sendCandToListe()" class="list-group-item">
-  <img src="../../assets/{{ oneCandidat.avatar }}" />
-  {{ oneCandidat.prenom }} {{ oneCandidat.nom }}
+<li appCustomDir (click)="sendCandToListe()" class="list-group-item">
+  <img src="../../assets/{{ oneCandidat.avatar | noAvatar }}" />
+  {{ oneCandidat.prenom }} {{ oneCandidat.nom | uppercase }}
 </li>

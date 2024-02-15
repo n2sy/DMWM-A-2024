@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class DirectComponent {
   bgColor = 'pink';
   txtColor = 'grey';
+
   class1 = true;
   class2 = false;
   class3 = false;
