@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Candidat } from '../models/candidat';
 
-@Injectable({
-  providedIn: 'root',
-})
+// @Injectable({
+//   providedIn: 'root',
+// })
 export class GestionRecruesService {
   tabRecrues: Candidat[] = [];
   constructor() {}
