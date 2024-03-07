@@ -1,0 +1,12 @@
+<h3>Cours d'Angular avec les DMWM-A</h3>
+
+<h5>Navigation côté HTML</h5>
+<a href="">Go To Cv</a>
+<button routerLink="/cv" class="btn btn-primary">Go To CV</button>
+<button [routerLink]="['servers']" class="btn btn-danger">Go To Servers</button>
+
+<hr />
+
+<h5>Navigation côté TS</h5>
+<button (click)="goToCv()" class="btn btn-warning">Go To CV</button>
+<button (click)="goToServers()" class="btn btn-info">Go To Servers</button>
