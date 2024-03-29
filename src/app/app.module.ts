@@ -24,6 +24,7 @@ import { ShortPipe } from './pipes/short.pipe';
 import { RecruterComponent } from './recruter/recruter.component';
 import { FirstService } from './services/first.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { InfosComponent } from './infos/infos.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     RecruterComponent,
     AccueilComponent,
     NavbarComponent,
+    InfosComponent,
   ],
   imports: [BrowserModule, FormsModule, DMWM_ROUTING],
   providers: [FirstService],
