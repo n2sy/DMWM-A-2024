@@ -25,6 +25,9 @@ import { RecruterComponent } from './recruter/recruter.component';
 import { FirstService } from './services/first.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InfosComponent } from './infos/infos.component';
+import { UpdateComponent } from './update/update.component';
+import { AddComponent } from './add/add.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { InfosComponent } from './infos/infos.component';
     AccueilComponent,
     NavbarComponent,
     InfosComponent,
+    UpdateComponent,
+    AddComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, FormsModule, DMWM_ROUTING],
   providers: [FirstService],
