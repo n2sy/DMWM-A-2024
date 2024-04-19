@@ -1,0 +1,11 @@
+Nom du serveur :
+<input [(ngModel)]="serverToEdit.nom" type="text" class="form-control" />
+
+statut du serveur :
+<select [(ngModel)]="serverToEdit.statut" name="" id="" class="form-control">
+  <option value=""></option>
+  <option value="online">online</option>
+  <option value="offline">offline</option>
+</select>
+
+<button routerLink="/servers" class="btn btn-primary">Back To List</button>

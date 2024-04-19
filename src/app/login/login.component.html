@@ -1,0 +1,51 @@
+<form #f="ngForm">
+  <label for="">Login</label>
+  <input
+    #inpLogin="ngModel"
+    required
+    email
+    ngModel
+    name="login"
+    type="text"
+    class="form-control"
+  />
+  @if (inpLogin.invalid && inpLogin.touched) {
+  <div class="alert alert-danger">Veuillez saisir une adresse mail...</div>
+
+  }
+  <label for="">Mot de passe</label>
+  <input
+    minlength="5"
+    ngModel
+    name="password"
+    type="text"
+    class="form-control"
+  />
+
+  <label for="">Section</label>
+  <select
+    ngModel
+    [ngModel]="defaultSection"
+    name="section"
+    class="form-control"
+  >
+    <option value=""></option>
+    <option value="gl">Génie Logiciel</option>
+    <option value="dmwm">Mobile et Web</option>
+    <option value="dsen">Data Science</option>
+  </select>
+
+  <p>{{ defaultSection }} </p>
+
+  <pre>
+    {{ f.value | json }}
+  </pre>
+
+  <button
+    [disabled]="f.invalid"
+    (click)="submitHandler(f)"
+    class="btn btn-primary"
+  >
+    Se connecter
+  </button>
+</form>

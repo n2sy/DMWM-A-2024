@@ -1,0 +1,14 @@
+<h5> {{ server.nom }}</h5>
+
+<hr />
+
+<p>Le statut est {{ server.statut }} </p>
+
+<button routerLink="edit" [disabled]="disabledEditBtn" class="btn btn-info">
+  Editer
+</button>
+<br />
+@if (disabledEditBtn) {
+
+<i>Impossible d'editer ce serveur</i>
+}
