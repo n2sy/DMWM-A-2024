@@ -1,4 +1,4 @@
-<form #f="ngForm">
+<form #f="ngForm" (ngSubmit)="submitHandler(f)">
   <label for="">Login</label>
   <input
     #inpLogin="ngModel"
@@ -23,12 +23,7 @@
   />
 
   <label for="">Section</label>
-  <select
-    ngModel
-    [ngModel]="defaultSection"
-    name="section"
-    class="form-control"
-  >
+  <select [ngModel]="defaultSection" name="section" class="form-control">
     <option value=""></option>
     <option value="gl">Génie Logiciel</option>
     <option value="dmwm">Mobile et Web</option>
@@ -37,15 +32,55 @@
 
   <p>{{ defaultSection }} </p>
 
+  <label for="">Commentaire</label>
+  <textarea
+    name="commentaire"
+    [(ngModel)]="myComment"
+    cols="5"
+    rows="4"
+    class="form-control"
+  ></textarea>
+
+  {{ myComment }}
+  <br />
+
+  <label for="">Gestion d'erreurs</label>
+  <input
+    #exp="ngModel"
+    ngModel
+    name="erreurs"
+    required
+    minlength="5"
+    pattern="nidhal"
+    type="text"
+    class="form-control"
+  />
+  @if (exp.invalid) {
+  <div class="alert alert-danger">
+    @if (exp.errors['required']) {
+    <p>Ce champ est obligatoire</p>
+
+    } @if (exp.errors['minlength']) {
+    <p>Le nombre minimal de caractères est 5</p>
+
+    } @if (exp.errors['pattern']) {
+    <p>Le pattern "nidhal"</p>
+
+    }
+  </div>
+  }
   <pre>
     {{ f.value | json }}
   </pre>
 
-  <button
-    [disabled]="f.invalid"
-    (click)="submitHandler(f)"
-    class="btn btn-primary"
-  >
+  <button type="submit" [disabled]="f.invalid" class="btn btn-primary">
     Se connecter
   </button>
+  <button type="button" (click)="generatePwd(f)" class="btn btn-warning">
+    Generate Password
+  </button>
+  <button type="button" (click)="generatePwd2(f)" class="btn btn-info">
+    Generate Password 2
+  </button>
+  <button type="button" (click)="reset(f)" class="btn btn-danger">Reset</button>
 </form>
