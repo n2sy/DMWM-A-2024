@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GestionCandidatsService } from '../services/gestion-candidats.service';
 import { Candidat } from '../models/candidat';
+import { GestionCandidatsService } from '../services/gestion-candidats.service';
 
 @Component({
   selector: 'app-infos',
@@ -29,5 +29,12 @@ export class InfosComponent {
         if (!this.selectedCandidat) this.router.navigateByUrl('/not-found');
       },
     });
+  }
+
+  onDelete() {
+    if (confirm('Etes vous sur de vouloir supprimer ce candidat ?')) {
+      this.candSer.deleteCandidat(this.selectedCandidat._id);
+      this.router.navigateByUrl('/cv');
+    }
   }
 }

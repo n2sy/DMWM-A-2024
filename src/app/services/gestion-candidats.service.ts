@@ -20,10 +20,15 @@ export class GestionCandidatsService {
     return this.allCandidats.find((cand) => cand._id == id);
   }
 
-  addCandidat() {
-    this.allCandidats.push(
-      new Candidat(3, 'New', 'Candidat', 20, 'Designer', 'lisa.png')
-    );
+  addCandidat(newCand) {
+    newCand._id = this.allCandidats[this.allCandidats.length - 1]._id + 1;
+    this.allCandidats.push(newCand);
+    console.log(this.allCandidats);
   }
   constructor() {}
+
+  deleteCandidat(id) {
+    let i = this.allCandidats.findIndex((cand) => cand._id == id);
+    this.allCandidats.splice(i, 1);
+  }
 }
