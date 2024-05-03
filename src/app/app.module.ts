@@ -30,6 +30,7 @@ import { FirstService } from './services/first.service';
 import { SubModule } from './sub/sub.module';
 import { UpdateComponent } from './update/update.component';
 import { LoginComponent } from './login/login.component';
+import { ExpObsComponent } from './exp-obs/exp-obs.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { LoginComponent } from './login/login.component';
     AddComponent,
     NotFoundComponent,
     LoginComponent,
+    ExpObsComponent,
   ],
   imports: [BrowserModule, FormsModule, DMWM_ROUTING],
   providers: [FirstService],

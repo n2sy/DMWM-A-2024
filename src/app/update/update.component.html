@@ -1,11 +1,34 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <label hidden for="">id</label>
+  <input
+    [ngModel]="candidatToUpdate._id"
+    required
+    hidden
+    name="_id"
+    type="text"
+    class="form-control"
+  />
   <label for="">Prénom</label>
-  <input ngModel required name="prenom" type="text" class="form-control" />
+  <input
+    [ngModel]="candidatToUpdate.prenom"
+    required
+    name="prenom"
+    type="text"
+    class="form-control"
+  />
   <label for="">Nom</label>
-  <input ngModel required name="nom" type="text" class="form-control" />
+  <input
+    [ngModel]="candidatToUpdate.nom"
+    required
+    name="nom"
+    type="text"
+    class="form-control"
+  />
   <label for="">Age</label>
   <input
-    ngModel
+    ngMo
+    [ngModel]="candidatToUpdate.age"
+    del
     min="20"
     max="50"
     name="age"
@@ -13,9 +36,19 @@
     class="form-control"
   />
   <label for="">Profession</label>
-  <input ngModel name="profession" type="text" class="form-control" />
+  <input
+    [ngModel]="candidatToUpdate.profession"
+    name="profession"
+    type="text"
+    class="form-control"
+  />
   <label for="">Avatar</label>
-  <input ngModel name="avatar" type="text" class="form-control" />
+  <input
+    [ngModel]="candidatToUpdate.avatar"
+    name="avatar"
+    type="text"
+    class="form-control"
+  />
 
-  <button class="btn btn-primary">Ajouter Candidat</button>
+  <button type="submit" class="btn btn-primary">Mettre à jour</button>
 </form>

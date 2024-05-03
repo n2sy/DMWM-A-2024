@@ -27,6 +27,11 @@ export class GestionCandidatsService {
   }
   constructor() {}
 
+  updateCandidat(uCand) {
+    let i = this.allCandidats.findIndex((cand) => cand._id == uCand._id);
+    this.allCandidats[i] = uCand;
+  }
+
   deleteCandidat(id) {
     let i = this.allCandidats.findIndex((cand) => cand._id == id);
     this.allCandidats.splice(i, 1);
