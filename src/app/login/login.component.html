@@ -1,3 +1,8 @@
+@if (showError) {
+<div class="alert alert-danger">Login et/ou mot de passe invalide(s)</div>
+
+}
+
 <form #f="ngForm" (ngSubmit)="submitHandler(f)">
   <label for="">Login</label>
   <input
@@ -5,7 +10,7 @@
     required
     email
     ngModel
-    name="login"
+    name="email"
     type="text"
     class="form-control"
   />
@@ -22,7 +27,7 @@
     class="form-control"
   />
 
-  <label for="">Section</label>
+  <!-- <label for="">Section</label>
   <select [ngModel]="defaultSection" name="section" class="form-control">
     <option value=""></option>
     <option value="gl">Génie Logiciel</option>
@@ -71,16 +76,35 @@
   }
   <pre>
     {{ f.value | json }}
-  </pre>
+  </pre> -->
+  <div class="col-4 offset-4">
+    @if (!showRegister) {
+    <button type="submit" class="btn btn-primary btn-nidhal">Login</button>
+    <button
+      (click)="toggleShowEgister()"
+      type="submit"
+      class="btn btn-warning btn-nidhal"
+    >
+      Switch to Register
+    </button>
 
-  <button type="submit" [disabled]="f.invalid" class="btn btn-primary">
-    Se connecter
-  </button>
-  <button type="button" (click)="generatePwd(f)" class="btn btn-warning">
+    } @else {<button type="submit" class="btn btn-info btn-nidhal">
+      Register
+    </button>
+    <button
+      (click)="toggleShowEgister()"
+      type="submit"
+      class="btn btn-danger btn-nidhal"
+    >
+      Switch to Login</button
+    >}
+  </div>
+
+  <!-- <button type="button" (click)="generatePwd(f)" class="btn btn-warning">
     Generate Password
   </button>
   <button type="button" (click)="generatePwd2(f)" class="btn btn-info">
     Generate Password 2
   </button>
-  <button type="button" (click)="reset(f)" class="btn btn-danger">Reset</button>
+  <button type="button" (click)="reset(f)" class="btn btn-danger">Reset</button> -->
 </form>

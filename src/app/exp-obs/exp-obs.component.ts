@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-exp-obs',
@@ -8,8 +8,18 @@ import { Observable, Observer } from 'rxjs';
 })
 export class ExpObsComponent {
   myObs$: Observable<string>;
+  subscriptionNumber: Subscription;
 
   ngOnInit() {
+    // this.myObs$ = new Observable((observer: Observer<number>) => {
+    //   let count = 0;
+    //   setInterval(() => {
+    //     count++;
+    //     if (count - 1 == 5) observer.complete();
+    //     observer.next(count);
+    //   }, 1000);
+    // });
+
     this.myObs$ = new Observable((observer: Observer<string>) => {
       setTimeout(() => {
         observer.next('first package');
@@ -23,24 +33,28 @@ export class ExpObsComponent {
       setTimeout(() => {
         observer.error(new Error('Erreur provoqué DMWM-A'));
       }, 8000);
-      // setTimeout(() => {
-      //   observer.error(new Error('Seconde Erreur provoqué DMWM-A'));
-      // }, 10000);
+      setTimeout(() => {
+        observer.error(new Error('Seconde Erreur provoqué DMWM-A'));
+      }, 10000);
       setTimeout(() => {
         observer.complete();
       }, 10000);
     });
 
-    // this.myObs$.subscribe({
-    //   next: (data) => {
-    //     console.log(data);
-    //   },
-    //   error: (err) => {
-    //     console.log('Erreur détecté : ', err);
-    //   },
-    //   complete: () => {
-    //     console.log('Flux terminé !');
-    //   },
-    // });
+    this.subscriptionNumber = this.myObs$.subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (err) => {
+        console.log('Erreur détecté : ', err);
+      },
+      complete: () => {
+        console.log('Flux terminé : la valeur 10 atteinte !');
+      },
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscriptionNumber.unsubscribe();
   }
 }

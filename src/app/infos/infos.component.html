@@ -7,9 +7,7 @@
             width="150px"
             height="150px"
             class="rounded-circle align-content-center"
-            src="https://api.dicebear.com/8.x/lorelei/svg?seed={{
-              selectedCandidat.prenom
-            }}"
+            [src]="selectedCandidat.avatar"
             alt=""
           />
         </div>
@@ -40,10 +38,7 @@
                 <tr>
                   <td>
                     <strong>Image</strong>
-                    {{
-                      "https://api.dicebear.com/8.x/lorelei/svg?seed=" +
-                        selectedCandidat.prenom
-                    }}
+                    {{ selectedCandidat.avatar }}
                   </td>
                 </tr>
               </tbody>

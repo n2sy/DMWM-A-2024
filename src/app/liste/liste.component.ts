@@ -13,7 +13,15 @@ export class ListeComponent {
 
   candSer = inject(GestionCandidatsService);
   ngOnInit() {
-    this.tabCands = this.candSer.getAllCandidats();
+    this.candSer.getAllCandidatsAPI().subscribe({
+      next: (data: Candidat[]) => {
+        this.tabCands = data;
+      },
+      error: (err) => {
+        alert('Problème...Données fictives chargées');
+        // this.tabCands = this.candSer.getAllCandidats();
+      },
+    });
   }
 
   sendCandToCv(cand) {

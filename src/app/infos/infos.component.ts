@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Candidat } from '../models/candidat';
 import { GestionCandidatsService } from '../services/gestion-candidats.service';
@@ -9,6 +9,7 @@ import { GestionCandidatsService } from '../services/gestion-candidats.service';
   styleUrl: './infos.component.css',
 })
 export class InfosComponent {
+    @Input() id;
   selectedCandidat: Candidat;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -23,18 +24,38 @@ export class InfosComponent {
 
     // Version 2
 
-    this.activatedRoute.paramMap.subscribe({
-      next: (value) => {
-        this.selectedCandidat = this.candSer.getCandidatById(value.get('id'));
-        if (!this.selectedCandidat) this.router.navigateByUrl('/not-found');
-      },
-    });
+    // this.activatedRoute.paramMap.subscribe({
+    //   next: (value) => {
+    //     this.candSer.getCandidatByIdAPI(value.get('id')).subscribe({
+    //       next: (response: Candidat) => {
+    //         this.selectedCandidat = response;
+    //       },
+    //       error: (err) => {
+    //         this.router.navigateByUrl('/not-found');
+    //       },
+    //     });
+    //   },
+    // });
+   
+        this.candSer.getCandidatByIdAPI(this.id).subscribe({
+          next: (response: Candidat) => {
+            this.selectedCandidat = response;
+          },
+          error: (err) => {
+            this.router.navigateByUrl('/not-found');
+          },
+        });
+    
   }
 
   onDelete() {
     if (confirm('Etes vous sur de vouloir supprimer ce candidat ?')) {
-      this.candSer.deleteCandidat(this.selectedCandidat._id);
-      this.router.navigateByUrl('/cv');
+      this.candSer.deleteCandidatAPI(this.selectedCandidat._id).subscribe({
+        next: (response) => {
+          alert(response['message']);
+          this.router.navigateByUrl('/cv');
+        },
+      });
     }
   }
 }

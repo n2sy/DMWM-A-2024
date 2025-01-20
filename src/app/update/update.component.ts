@@ -19,14 +19,25 @@ export class UpdateComponent {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe({
       next: (value) => {
-        this.candidatToUpdate = this.candSer.getCandidatById(value.get('id'));
+        this.candSer.getCandidatByIdAPI(value.get('id')).subscribe({
+          next: (response: Candidat) => {
+            this.candidatToUpdate = response;
+          },
+        });
       },
     });
   }
   onSubmit(uCand) {
     // uCand._id = this.candidatToUpdate._id;
     console.log(uCand);
-    this.candSer.updateCandidat(uCand);
-    this.router.navigateByUrl('/cv');
+    this.candSer.updateCandidatAPI(uCand).subscribe({
+      next: (response) => {
+        alert(response['message']);
+        this.router.navigateByUrl('/cv');
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }
